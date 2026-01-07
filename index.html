@@ -1,57 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Personal Profile</title>
+    <title>Семейный альбом</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="app">
+<header>
+    <h1>Наш семейный альбом</h1>
+    <p>
+        Этот сайт — место, где собраны тёплые воспоминания нашей семьи.
+        Здесь хранятся фотографии, моменты и истории, к которым всегда можно вернуться.
+    </p>
+</header>
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-        <h3>Profile</h3>
-        <ul>
-            <li>Profile</li>
-            <li>Hobbies</li>
-            <li>Dreams</li>
-            <li>Favorites</li>
-            <li>Settings</li>
-        </ul>
-    </aside>
+<section>
+    <h2>Мама</h2>
+    <p class="desc">Самый тёплый и заботливый человек в нашей семье.</p>
+    <div class="gallery">
+        {% for photo in mom %}
+        <img src="{{ url_for('static', filename='photos/mom/' + photo) }}">
+        {% endfor %}
+    </div>
+</section>
 
-    <!-- MAIN CONTENT -->
-    <main class="content">
+<section>
+    <h2>Папа</h2>
+    <p class="desc">Надёжная опора и пример силы и спокойствия.</p>
+    <div class="gallery">
+        {% for photo in dad %}
+        <img src="{{ url_for('static', filename='photos/dad/' + photo) }}">
+        {% endfor %}
+    </div>
+</section>
 
-        <input class="search" type="text" placeholder="Search memories or dreams…">
+<section>
+    <h2>Я</h2>
+    <p class="desc">Мои моменты, эмоции и воспоминания.</p>
+    <div class="gallery">
+        {% for photo in me %}
+        <img src="{{ url_for('static', filename='photos/me/' + photo) }}">
+        {% endfor %}
+    </div>
+</section>
 
-        <section class="glass">
-            <h1>{{ profile.name }}</h1>
-            <p>{{ profile.description }}</p>
+<section>
+    <h2>Сестра</h2>
+    <p class="desc">Часть моей жизни и моего детства.</p>
+    <div class="gallery">
+        {% for photo in sister1 %}
+        <img src="{{ url_for('static', filename='photos/sister1/' + photo) }}">
+        {% endfor %}
+    </div>
+</section>
 
-            <div class="tags">
-                {% for tag in profile.tags %}
-                    <span>{{ tag }}</span>
-                {% endfor %}
-            </div>
-        </section>
+<section>
+    <h2>Сестра</h2>
+    <p class="desc">Ещё одна важная часть нашей семьи.</p>
+    <div class="gallery">
+        {% for photo in sister2 %}
+        <img src="{{ url_for('static', filename='photos/sister2/' + photo) }}">
+        {% endfor %}
+    </div>
+</section>
 
-        <section class="glass">
-            <h2>Future Dreams</h2>
-            <div class="cards">
-                {% for dream in profile.dreams %}
-                <div class="card">
-                    <img src="{{ dream.image }}" alt="{{ dream.title }}">
-                    <p>{{ dream.title }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
-
-    </main>
-
-</div>
+<footer>
+    <p>Семейный архив · Сделано с любовью</p>
+</footer>
 
 </body>
 </html>
+
+
